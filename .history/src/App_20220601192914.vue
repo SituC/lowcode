@@ -2,10 +2,10 @@
   <div id="app">
     <el-page-header :content="pageTitle"></el-page-header>
     <div>
-      <el-form label-width="150px" :form="form" :rules="rules">
+      <el-form label-width="150px">
         <el-row v-for="(config, configIdx) in fields" :key="configIdx">
           <el-col v-for="(field, fieldIdx) in config" :key="fieldIdx" :span="field.colSpan">
-            <el-form-item :label="field.label" :prop="field.key">
+            <el-form-item :label="field.label">
               <template>
                 <template v-if="field['x-component'] ==='el-input'">
                   <el-input v-model="form[field.key]" :disabled="field['disabled']" :placeholder="field['x-component-props'].placeholder"></el-input>
@@ -37,7 +37,6 @@
                     :loading="field['x-component-props'].loading"
                     :size="field['x-component-props'].size"
                     :type="field['x-component-props'].type"
-                    @click.stop="fnMap[field['x-props'].buttonClickFnName](field)"
                     >{{ field['x-props'].label }}</el-button>
                 </template>
               </template>
@@ -60,18 +59,7 @@ export default {
     return {
       form: {},
       dialogImageUrl: '',
-      dialogVisible: false,
-      fnMap: {
-        handleSubmit: (e) => {
-          console.log(e)
-          this.$message.success('提交方法触发')
-          console.log(this.form)
-        },
-        cancelHandle: (e) => {
-          console.log(e)
-          this.$message.warning('取消方法触发')
-        }
-      },
+      dialogVisible: false
     }
   },
   computed: {
@@ -83,19 +71,9 @@ export default {
     },
     pageTitle() {
       return form.formTitle
-    },
+    }
   },
   components: {
-  },
-  created() {
-    console.log(form)
-      form.formFields.forEach((cur) => {
-        cur.forEach(item => {
-          if (item.key) {
-            this.$set(this.form, item.key, item.value)
-          }
-        })
-      })
   },
   methods: {
     getOriginOption(field) {
@@ -127,7 +105,6 @@ export default {
     },
     handleUploadSuccess() {
     },
-    handleUploadRemove() {}
   }
 }
 </script>

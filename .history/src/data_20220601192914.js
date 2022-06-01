@@ -1,6 +1,5 @@
 export const form = {
 	formTitle: "用车申请", // 当前表单名
-	formParams: "carApply",
 	formFields: [
 		// 一条代表一行的所有控件通过（row col）去拆分位置
 		[
@@ -106,9 +105,9 @@ export const form = {
 					},
 					"label": "取消",
 					"className": "my-button", // 字段的 UI 组件的 style 样式
-					"buttonType": "cancel", // 按钮的操作类型， cancel or click
+					"buttonType": "click", // 按钮的操作类型， cancel or click
 					"buttonClickUrl": "http://xxxxx.com/submit", // 点击按钮的接口地址
-					"buttonClickFnName": "cancelHandle", // 点击按钮的方法名称
+					"buttonClickFnName": "handleSubmit", // 点击按钮的方法名称
 				},
 				"editable": true, //�是否可编辑
 				"events": {}, // UI 组件的事件

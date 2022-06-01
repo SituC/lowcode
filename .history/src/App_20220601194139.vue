@@ -37,7 +37,7 @@
                     :loading="field['x-component-props'].loading"
                     :size="field['x-component-props'].size"
                     :type="field['x-component-props'].type"
-                    @click.stop="fnMap[field['x-props'].buttonClickFnName](field)"
+                    @click.stop="methods[field['x-props'].buttonClickFnName]"
                     >{{ field['x-props'].label }}</el-button>
                 </template>
               </template>
@@ -61,15 +61,12 @@ export default {
       form: {},
       dialogImageUrl: '',
       dialogVisible: false,
-      fnMap: {
-        handleSubmit: (e) => {
-          console.log(e)
-          this.$message.success('提交方法触发')
-          console.log(this.form)
+      methods: {
+        handleSubmit:() => {
+          alert('提交方法')
         },
-        cancelHandle: (e) => {
-          console.log(e)
-          this.$message.warning('取消方法触发')
+        cancelHandle: () => {
+          alert('取消方法')
         }
       },
     }
@@ -83,19 +80,9 @@ export default {
     },
     pageTitle() {
       return form.formTitle
-    },
+    }
   },
   components: {
-  },
-  created() {
-    console.log(form)
-      form.formFields.forEach((cur) => {
-        cur.forEach(item => {
-          if (item.key) {
-            this.$set(this.form, item.key, item.value)
-          }
-        })
-      })
   },
   methods: {
     getOriginOption(field) {

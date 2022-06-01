@@ -58,7 +58,7 @@ export default {
   name: 'App',
   data() {
     return {
-      form: {},
+      // form: {},
       dialogImageUrl: '',
       dialogVisible: false,
       fnMap: {
@@ -84,18 +84,17 @@ export default {
     pageTitle() {
       return form.formTitle
     },
-  },
-  components: {
-  },
-  created() {
-    console.log(form)
+    form() {
+      const obj = {}
       form.formFields.forEach((cur) => {
         cur.forEach(item => {
-          if (item.key) {
-            this.$set(this.form, item.key, item.value)
-          }
+          obj[item.key] = item.value
         })
       })
+      return obj
+    },
+  },
+  components: {
   },
   methods: {
     getOriginOption(field) {

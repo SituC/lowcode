@@ -88,7 +88,6 @@ export default {
   components: {
   },
   created() {
-    console.log(form)
       form.formFields.forEach((cur) => {
         cur.forEach(item => {
           if (item.key) {

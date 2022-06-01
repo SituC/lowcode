@@ -83,19 +83,9 @@ export default {
     },
     pageTitle() {
       return form.formTitle
-    },
+    }
   },
   components: {
-  },
-  created() {
-    console.log(form)
-      form.formFields.forEach((cur) => {
-        cur.forEach(item => {
-          if (item.key) {
-            this.$set(this.form, item.key, item.value)
-          }
-        })
-      })
   },
   methods: {
     getOriginOption(field) {

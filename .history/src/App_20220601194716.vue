@@ -65,10 +65,8 @@ export default {
         handleSubmit: (e) => {
           console.log(e)
           this.$message.success('提交方法触发')
-          console.log(this.form)
         },
-        cancelHandle: (e) => {
-          console.log(e)
+        cancelHandle: () => {
           this.$message.warning('取消方法触发')
         }
       },
@@ -83,19 +81,9 @@ export default {
     },
     pageTitle() {
       return form.formTitle
-    },
+    }
   },
   components: {
-  },
-  created() {
-    console.log(form)
-      form.formFields.forEach((cur) => {
-        cur.forEach(item => {
-          if (item.key) {
-            this.$set(this.form, item.key, item.value)
-          }
-        })
-      })
   },
   methods: {
     getOriginOption(field) {
